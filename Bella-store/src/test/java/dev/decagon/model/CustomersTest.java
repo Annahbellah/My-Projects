@@ -11,9 +11,9 @@ class CustomersTest {
 
     @Test
     void ShouldReturnInsufficientFundWhenCustomersBalanceIsShortAndPurchaseSuccessfulOtherwise() {
-        Products product1 = new Products("Soap", 200, 50);
-        Products product2 = new Products("Body Lotion", 5000, 20);
-        Products product3 = new Products("Sanitary Pad", 2000, 100);
+            Products product1 = new Products(1L, "Joy Soap", 200, 50, "Bar Soap", "Cosmetics");
+            Products product2 = new Products(2L, "Pears", 5000, 20, "Body Lotion", "Cosmetics");
+            Products product3 = new Products(3L, "Always", 2000, 100,"Sanitary Pad", "toiletories" );
 
         ArrayList<Products> cart = new ArrayList();
         cart.add(product1);

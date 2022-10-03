@@ -1,6 +1,7 @@
 package dev.decagon.model;
 
 
+import dev.decagon.exceptions.OutOfStockException;
 import dev.decagon.interfaces.CashierInterface;
 
 public class Cashier extends Persons implements CashierInterface {
@@ -18,7 +19,7 @@ public class Cashier extends Persons implements CashierInterface {
             issueReceipts(customers, products);
             return "SOLD";
         }else{
-            return null;
+            throw new OutOfStockException("Product is out of stock");
         }
     }
 

@@ -2,6 +2,7 @@ package dev.decagon.model;
 
 
 import dev.decagon.Enums.Qualification;
+import dev.decagon.exceptions.UnsuccessfulApplicationException;
 import dev.decagon.interfaces.ManagerInterface;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Manager extends Persons implements ManagerInterface {
           applicants.add(applicant);
           message = "Congratulations! " + applicant.getFullName() + " you have been hired!";
        }else {
-           message = "Sorry! " + applicant.getFullName() + ", we could not proceed with you this time !";
+           throw new UnsuccessfulApplicationException("Sorry " + applicant.getFullName() + ", try some other time!");
        }
         return message;
     }

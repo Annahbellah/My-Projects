@@ -1,6 +1,7 @@
 package dev.decagon.model;
 
 
+import dev.decagon.exceptions.InsufficientFundException;
 import dev.decagon.interfaces.CustomersInterface;
 
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ public class Customers extends Persons implements CustomersInterface {
     if (customers.getBalance() >= products.getPrice() * products.getQuantity()){
         return "Purchase Successful";
     }else {
-        return "Insufficient Fund";
+        throw new InsufficientFundException("Insufficient Fund");
     }
     }
 }

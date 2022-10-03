@@ -2,6 +2,7 @@ package dev.decagon.model;
 
 
 import dev.decagon.Enums.Qualification;
+import dev.decagon.exceptions.UnsuccessfulApplicationException;
 import dev.decagon.interfaces.ApplicantInterface;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class Applicant extends Persons implements ApplicantInterface {
             applicants.add(applicant);
             result = "Congratulations! " + applicant.getFullName() + ", your application was successful";
         }else {
-            result = "Sorry " + applicant.getFullName() + ", try some other time!";
+            throw new UnsuccessfulApplicationException("Sorry " + applicant.getFullName() + ", try some other time!");
         }
 
         return result;

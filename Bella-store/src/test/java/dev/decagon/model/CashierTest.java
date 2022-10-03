@@ -11,9 +11,10 @@ class CashierTest {
 
     @Test
     void ShouldReturnSOLDIfPurchaseIsSuccessful() {
-        Products product1 = new Products("Soap", 200, 50);
-        Products product2 = new Products("Body Lotion", 5000, 20);
-        Products product3 = new Products("Sanitary Pad", 2000, 100);
+
+        Products product1 = new Products(1L, "Joy Soap", 200, 50, "Bar Soap", "Cosmetics");
+        Products product2 = new Products(2L, "Pears", 5000, 20, "Body Lotion", "Cosmetics");
+        Products product3 = new Products(3L, "Always", 2000, 100,"Sanitary Pad", "toiletories" );
 
         ArrayList<Products> cart = new ArrayList();
         cart.add(product1);
@@ -30,15 +31,16 @@ class CashierTest {
         String result2 = cashier.sellProducts(product2, customer);
 
         Assert.assertEquals("SOLD", result1);
+        Assert.assertEquals("Product is out of stock", result2);
 
 
     }
 
     @Test
     void issueReceipts() {
-        Products product1 = new Products("Soap", 200, 50);
-        Products product2 = new Products("Body Lotion", 5000, 20);
-        Products product3 = new Products("Sanitary Pad", 2000, 100);
+        Products product1 = new Products(1L, "Joy Soap", 200, 50, "Bar Soap", "Cosmetics");
+        Products product2 = new Products(2L, "Pears", 5000, 20, "Body Lotion", "Cosmetics");
+        Products product3 = new Products(3L, "Always", 2000, 100,"Sanitary Pad", "toiletories" );
 
         ArrayList<Products> cart = new ArrayList();
         cart.add(product1);
@@ -52,8 +54,10 @@ class CashierTest {
 
         Cashier cashier = new Cashier("Baby Girl", 23, "babygirl4live@gmail.com", 31);
         String result1 = cashier.issueReceipts(customer, product1);
+//        String result2 = cashier.issueReceipts(customer, product1);
 
         Assert.assertEquals("RECEIPT", result1);
+//        Assert.assertEquals("Product is out of stock", result2);
 
     }
 }

@@ -5,13 +5,14 @@ import dev.decagon.Enums.Qualification;
 import dev.decagon.model.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Main {
 
     public static void main(String[] args) {
-        Products product1 = new Products("Soap", 200, 50);
-        Products product2 = new Products("Body Lotion", 5000, 20);
-        Products product3 = new Products("Sanitary Pad", 2000, 100);
+        Products product1 = new Products(1L," Joy Soap", 200, 50,"Bar soap", "Cosmetics");
+        Products product2 = new Products(2L, "Pears", 5000, 20, "Body lotion", "Cosmetics");
+        Products product3 = new Products(3L,"Always", 2000, 100, "Sanitory Pad","Toiletories");
 
         ArrayList<Products> cart = new ArrayList();
         cart.add(product1);
