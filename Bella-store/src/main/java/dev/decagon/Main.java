@@ -36,10 +36,11 @@ public class Main {
 //        System.out.println(applicant1.apply(applicant1));
 //        System.out.println(applicant1.apply(applicant2));
 
-
-        Cashier cashier = new Cashier("Baby Girl", 23, "babygirl4live@gmail.com", 31);
-        System.out.println(cashier.sellProducts(product1, customer));
-        System.out.println(cashier.issueReceipts(customer, product1));
-
+        BellaStore store = new BellaStore();
+        store.loadProducts();
+        for (Products product:store.getProductsList()
+             ) {
+            System.out.println(product.toString());
+        }
     }
 }

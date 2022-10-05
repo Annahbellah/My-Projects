@@ -1,6 +1,7 @@
 package dev.decagon.model;
 
 import dev.decagon.Enums.Qualification;
+import dev.decagon.exceptions.UnsuccessfulApplicationException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -16,9 +17,8 @@ class ManagerTest {
                 20, Qualification.OND, "Cashier");
 
         Manager manager = new Manager("Bella Tim", 22, "anabella@gmail.com", 23);
-        String result1 =  manager.hire(applicant1);
-        String result2 = manager.hire(applicant2);
 
-        Assert.assertEquals("Congratulations! " + applicant1.getFullName() + " you have been hired!", result1);
+
+        Assert.assertThrows(UnsuccessfulApplicationException.class,()->manager.hire(applicant2));
     }
 }

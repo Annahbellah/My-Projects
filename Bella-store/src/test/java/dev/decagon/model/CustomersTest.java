@@ -1,5 +1,6 @@
 package dev.decagon.model;
 
+import dev.decagon.exceptions.InsufficientFundException;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
@@ -21,11 +22,8 @@ class CustomersTest {
         cart.add(product3);
 
         Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000, cart);
-        System.out.println(customer.buy(customer, product2));
 
-        String result1 = customer.buy(customer, product1);
-        String result2 = customer.buy(customer, product2);
 
-        Assert.assertEquals("Insufficient Fund",result2);
+        Assert.assertThrows(InsufficientFundException.class,()->customer.buy(customer, product2));
     }
 }

@@ -1,6 +1,7 @@
-ID,Product Name,Price,Quantity,Description,Category
 1,Joy Soap,200,50,Bar soap,Cosmetics
 2,Pears,5000,20,Body Lotion,Cosmetics
-3,Always,2000,100,Sanitary Pad,Toiletories
+3,Always,2000,100,Sanitary Pad,Toiletries
 4,Hublot,50,10000,Wrist Watch,Accessories
-5,Flour,90,5000,3 kg,Confectionery
+5,Flour,90,5000,3kg,Confectionery
+
+ID,Product Name,Price,Quantity,Description,Category
