@@ -2,6 +2,7 @@ package dev.decagon.model;
 
 
 import dev.decagon.exceptions.InsufficientFundException;
+import dev.decagon.exceptions.OutOfStockException;
 import dev.decagon.interfaces.CustomersInterface;
 
 import java.util.ArrayList;
@@ -12,13 +13,13 @@ public class Customers extends Persons implements CustomersInterface {
     private ArrayList<Products> cart;
 
     public Customers() {
-
+        this.cart = new ArrayList<>();
     }
 
-    public Customers(String fullName, Integer age, String email, Integer id, double balance, ArrayList<Products> cart) {
+    public Customers(String fullName, Integer age, String email, Integer id, double balance) {
         super(fullName, age, email, id);
         this.balance = balance;
-        this.cart = cart;
+        this.cart = new ArrayList<>();
     }
 
     public double getBalance() {
@@ -33,9 +34,6 @@ public class Customers extends Persons implements CustomersInterface {
         return cart;
     }
 
-    public void setCart(ArrayList<Products> cart) {
-        this.cart = cart;
-    }
 
     @Override
     public String toString() {
@@ -51,5 +49,15 @@ public class Customers extends Persons implements CustomersInterface {
     }else {
         throw new InsufficientFundException("Insufficient Fund");
     }
+    }
+
+    public Products productSearch(String productName,ArrayList<Products> productList){
+        for (Products product:productList
+             ) {
+            if(product.getProductName().equals(productName)){
+                return product;
+            }
+        }
+        throw new OutOfStockException("product not available");
     }
 }

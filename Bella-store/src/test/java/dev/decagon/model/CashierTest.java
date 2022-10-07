@@ -22,7 +22,7 @@ class CashierTest {
         cart.add(product2);
         cart.add(product3);
 
-        Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000, cart);
+        Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000);
 
 
         Cashier cashier = new Cashier("Baby Girl", 23, "babygirl4live@gmail.com", 31);
@@ -41,7 +41,7 @@ class CashierTest {
         ArrayList<Products> cart = new ArrayList();
         cart.add(product1);
 
-        Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000, cart);
+        Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000);
         customer.buy(customer, product1);
 
 

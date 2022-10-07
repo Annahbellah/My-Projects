@@ -1,29 +1,51 @@
 package dev.decagon.model;
 
 import dev.decagon.exceptions.InsufficientFundException;
+import dev.decagon.exceptions.OutOfStockException;
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 
 class CustomersTest {
 
+    private BellaStore store;
+    private Customers customer;
+    @BeforeEach
+    void setUp() {
+        store=new BellaStore();
+        store.loadProducts();
+        customer = new Customers("Stephen King", 28,
+                "sk@gmail.com", 12, 50000);
+    }
+
     @Test
     void ShouldReturnInsufficientFundWhenCustomersBalanceIsShortAndPurchaseSuccessfulOtherwise() {
-            Products product1 = new Products(1L, "Joy Soap", 200, 50, "Bar Soap", "Cosmetics");
-            Products product2 = new Products(2L, "Pears", 5000, 20, "Body Lotion", "Cosmetics");
-            Products product3 = new Products(3L, "Always", 2000, 100,"Sanitary Pad", "toiletories" );
 
-        ArrayList<Products> cart = new ArrayList();
-        cart.add(product1);
-        cart.add(product2);
-        cart.add(product3);
+        Assert.assertThrows(InsufficientFundException.class,()->customer.buy(customer,
+                customer.productSearch("Hublot", (ArrayList<Products>) store.getProductsList())));
+    }
 
-        Customers customer = new Customers("Stephen King", 28, "sk@gmail.com", 12, 50000, cart);
+    @Test
+    void productSearch() {
+        String productNameToSearch="Hublot";
+        Products product=null;
+        try{
+            product=customer.productSearch(productNameToSearch, (ArrayList<Products>) store.getProductsList());
+        }catch (OutOfStockException outOfStockException){
+            outOfStockException.printStackTrace();
+        }
 
+        Assert.assertEquals(product.getProductName(),productNameToSearch);
+    }
 
-        Assert.assertThrows(InsufficientFundException.class,()->customer.buy(customer, product2));
+    @Test
+    void productSearchWhenNotAvailable() {
+        String productNameToSearch="rice";
+
+        Assert.assertThrows(OutOfStockException.class,
+                ()->customer.productSearch(productNameToSearch, (ArrayList<Products>) store.getProductsList()));
     }
 }
