@@ -3,12 +3,12 @@ package dev.decagon.model;
 
 import dev.decagon.exceptions.InsufficientFundException;
 import dev.decagon.exceptions.OutOfStockException;
-import dev.decagon.interfaces.CustomersInterface;
+import dev.decagon.service.CustomersService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Customers extends Persons implements CustomersInterface {
+public class Customers extends Persons implements CustomersService {
     private double balance;
     private ArrayList<Products> cart;
 
@@ -43,21 +43,21 @@ public class Customers extends Persons implements CustomersInterface {
                 '}';
     }
 
-    public String buy(Customers customers, Products products) {
-    if (customers.getBalance() >= products.getPrice() * products.getQuantity()){
-        return "Purchase Successful";
-    }else {
-        throw new InsufficientFundException("Insufficient Fund");
-    }
-    }
+                                        public String buy(Customers customers, Products products) {
+                                        if (customers.getBalance() >= products.getPrice() * products.getQuantity()){
+                                            return "Purchase Successful";
+                                        }else {
+                                            throw new InsufficientFundException("Insufficient Fund");
+                                        }
+                                        }
 
-    public Products productSearch(String productName,ArrayList<Products> productList){
-        for (Products product:productList
-             ) {
-            if(product.getProductName().equals(productName)){
-                return product;
-            }
-        }
-        throw new OutOfStockException("product not available");
-    }
+                                        public Products productSearch(String productName,ArrayList<Products> productList){
+                                            for (Products product:productList
+                                                 ) {
+                                                if(product.getProductName().equals(productName)){
+                                                    return product;
+                                                }
+                                            }
+                                            throw new OutOfStockException("product not available");
+                                        }
 }

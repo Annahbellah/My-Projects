@@ -1,7 +1,7 @@
-package dev.decagon.interfaces;
+package dev.decagon.service;
 
 import dev.decagon.model.Applicant;
 
-public interface ManagerInterface {
+public interface ManagerService {
     String hire(Applicant applicant);
 }

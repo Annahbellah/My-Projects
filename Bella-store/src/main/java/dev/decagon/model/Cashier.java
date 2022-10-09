@@ -2,9 +2,9 @@ package dev.decagon.model;
 
 
 import dev.decagon.exceptions.OutOfStockException;
-import dev.decagon.interfaces.CashierInterface;
+import dev.decagon.service.CashierService;
 
-public class Cashier extends Persons implements CashierInterface {
+public class Cashier extends Persons {
 
     public Cashier() {
     }
@@ -14,24 +14,5 @@ public class Cashier extends Persons implements CashierInterface {
     }
 
 
-    public String sellProducts(Products products, Customers customers) {
-        if (customers.buy(customers, products).equals("Purchase Successful")){
-            issueReceipts(customers, products);
-            return "SOLD";
-        }else{
-            throw new OutOfStockException("Product is out of stock");
-        }
-    }
 
-
-    public String issueReceipts(Customers customers, Products products) {
-            System.out.println("#############RECIEPTS###############");
-            System.out.println("Name: " + customers.getFullName());
-            System.out.println("Items: " + products.getProductName());
-            System.out.println("QTY: " + products.getQuantity());
-            System.out.println("PRICE: " + products.getPrice());
-            System.out.println("TOTAL: " + products.getPrice() * products.getQuantity());
-
-            return "RECEIPT";
-    }
 }

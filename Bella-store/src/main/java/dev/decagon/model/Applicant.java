@@ -3,12 +3,12 @@ package dev.decagon.model;
 
 import dev.decagon.Enums.Qualification;
 import dev.decagon.exceptions.UnsuccessfulApplicationException;
-import dev.decagon.interfaces.ApplicantInterface;
+import dev.decagon.service.ApplicantService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Applicant extends Persons implements ApplicantInterface {
+public class Applicant extends Persons  {
     private Qualification qualification;
     private String jobAppliedFor;
 
@@ -46,18 +46,4 @@ public class Applicant extends Persons implements ApplicantInterface {
                 '}';
     }
 
-
-
-    public String apply(Applicant applicant) {
-        String result ="";
-        List<Applicant> applicants = new ArrayList();
-        if(applicant.getQualification() == Qualification.BSC || applicant.getQualification() == Qualification.HND){
-            applicants.add(applicant);
-            result = "Congratulations! " + applicant.getFullName() + ", your application was successful";
-        }else {
-            throw new UnsuccessfulApplicationException("Sorry " + applicant.getFullName() + ", try some other time!");
-        }
-
-        return result;
-    }
 }

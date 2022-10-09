@@ -1,7 +1,7 @@
-package dev.decagon.interfaces;
+package dev.decagon.service;
 
 import dev.decagon.model.Applicant;
 
-public interface ApplicantInterface {
+public interface ApplicantService {
    String apply(Applicant applicant);
 }
